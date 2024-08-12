@@ -14,8 +14,11 @@ jobs:
       run:
         shell: bash
     steps:
-      # Checkout the repository to the GitHub Actions runner
+      - name: Checkout code
+        uses: actions/checkout@v2
       - name: Checkout
+        # Checkout the repository to the GitHub Actions runner
+
         uses: actions/checkout@v4
       - name: Setup Terraform
         # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
@@ -27,7 +30,7 @@ jobs:
         working-directory: ./
         # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
 
-        run: terraform
+        run: terraform init
       - name: Terraform Format
         working-directory: ./
         # Checks that all Terraform configuration files adhere to a canonical format
